@@ -1,0 +1,24 @@
+GTC PRIME — SOURCE CODE
+
+Requirements: Node.js >=20.9.0 and npm.
+
+1. Extract this ZIP.
+2. Open the gtc-prime folder in your code editor (folder name: gtc-prime).
+3. Open a terminal in that folder.
+4. Run: npm ci
+5. Run: npm run dev
+6. Open: http://localhost:4173
+
+Production build: npm run build
+Static output folder: out
+
+Main design settings: tailwind.config.js
+Page styles: app/globals.css
+Page components and animations: components/Website.js
+English and Arabic content: lib/content.js
+Images: public/assets/
+
+Includes the latest transparent hero and automatic floating animation.
+The enquiry form opens an email draft; a live submission service is not connected.
+
+Dependencies and generated build files are excluded. npm ci installs the exact locked dependency versions.
