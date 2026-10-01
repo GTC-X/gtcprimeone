@@ -11,6 +11,7 @@ import RiskManagementPage from './risk-management/RiskManagementPage';
 import ConnectivityPage from './connectivity/ConnectivityPage';
 import AboutPage from './about/AboutPage';
 import ContactPage from './contact/ContactPage';
+import LiquidityPage from './liquidity/LiquidityPage';
 config.autoAddCss = false;
 const serviceIcons = [faLayerGroup, faNetworkWired, faShieldHalved];
 const audienceIcons = [faBuildingColumns, faBriefcase, faUserTie, faDisplay];
@@ -28,7 +29,7 @@ export default function Website({language='en',page='home'}) {
    <nav aria-label={language==='ar'?'القائمة الرئيسية':'Main navigation'} className="desktop-nav">{nav.map(key=><Link key={key} href={href(key)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}</nav>
    <div className="header-actions"><Link className="language-control" href={href(page,language==='en'?'ar':'en')} aria-label={t.language}><Icon icon={faGlobe}/><span>{language==='en'?'العربية':'EN'}</span></Link><Link href={href('contact')} className="button button-primary header-cta">{t.talk}</Link><button ref={menuButton} onClick={()=>setMenu(!menu)} aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu?t.close:t.menu} className="menu-toggle"><Icon icon={menu?faXmark:faBars}/></button></div>
   </div>{menu&&<nav id="mobile-nav" className="mobile-nav" aria-label={t.menu}>{['home',...nav,'contact'].map(key=><Link key={key} href={href(key)} onClick={()=>setMenu(false)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}<a href="https://mygtcportal.com/" target="_blank" rel="noopener noreferrer">{t.account}</a></nav>}</header>
-  <main id="main">{page==='home'?<Home t={t} href={href}/>:page==='about'?<AboutPage t={t} href={href}/>:page==='contact'?<ContactPage t={t} href={href}/>:page==='risk-management'?<RiskManagementPage t={t} href={href}/>:page==='connectivity'?<ConnectivityPage t={t} href={href}/>:<Service t={t} page={page} href={href}/>}</main>
+  <main id="main">{page==='home'?<Home t={t} href={href}/>:page==='about'?<AboutPage t={t} href={href}/>:page==='contact'?<ContactPage t={t} href={href}/>:page==='liquidity'?<LiquidityPage t={t} href={href}/>:page==='risk-management'?<RiskManagementPage t={t} href={href}/>:page==='connectivity'?<ConnectivityPage t={t} href={href}/>:<Service t={t} page={page} href={href}/>}</main>
   <Footer t={t} href={href}/>
  </div>;
 }
