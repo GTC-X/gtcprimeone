@@ -1,34 +1,41 @@
 import { Reveal, Kicker, Heading } from '../shared/PageUi';
 
-export default function AboutNarrative({ paragraphs, kicker, title }) {
-  const [lead, ...rest] = paragraphs;
+export default function AboutNarrative({ narrative, kicker, title }) {
+  const { lead, chapters } = narrative;
 
   return (
     <div className="audience-section">
-      <section id="about-content" className="section shell about-narrative">
-        <Reveal className="about-narrative-head">
-          <Kicker className=" justify-center">{kicker}</Kicker>
-          <Heading className="about-narrative-title">{title}</Heading>
+      <section id="about-content" className="section shell about-story">
+        <Reveal className="about-story-head">
+          <Kicker className="justify-center">{kicker}</Kicker>
+          <Heading className="about-story-title">{title}</Heading>
         </Reveal>
 
-        {lead && (
-          <Reveal className="about-narrative-lead" delay={0.06}>
-            <p>{lead}</p>
-          </Reveal>
-        )}
+        <Reveal className="about-story-lead" delay={0.05}>
+          <p>{lead}</p>
+        </Reveal>
 
-        {rest.length > 0 && (
-          <div className="about-narrative-grid">
-            {rest.map((paragraph, index) => (
-              <Reveal key={index} delay={0.1 + index * 0.08} className="about-narrative-item">
-                <span className="about-narrative-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <p>{paragraph}</p>
-              </Reveal>
-            ))}
-          </div>
-        )}
+        <div className="about-story-grid">
+          {chapters.map((chapter, index) => (
+            <Reveal key={chapter.title} delay={0.08 + index * 0.06} className="about-story-item">
+              <span className="about-story-index" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{chapter.title}</h3>
+              <p>{chapter.text}</p>
+              {chapter.partners?.length > 0 && (
+                <p className="about-story-partners">
+                  {chapter.partners.map((name, i) => (
+                    <span key={name}>
+                      {i > 0 ? ' · ' : null}
+                      {name}
+                    </span>
+                  ))}
+                </p>
+              )}
+            </Reveal>
+          ))}
+        </div>
       </section>
     </div>
   );

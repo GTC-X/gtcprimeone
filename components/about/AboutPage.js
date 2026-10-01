@@ -1,7 +1,6 @@
 import AboutHero from './AboutHero';
 import AboutNarrative from './AboutNarrative';
 import AboutCtaBanner from './AboutCtaBanner';
-import ProPartnerSection from '../shared/ProPartnerSection';
 
 export default function AboutPage({ t, href }) {
   const page = t.aboutPage;
@@ -15,7 +14,7 @@ export default function AboutPage({ t, href }) {
         contactHref={href('contact')}
       />
       <AboutNarrative
-        paragraphs={page.paragraphs}
+        narrative={page.narrative}
         kicker={t.labels.about}
         title={t.aboutSub}
       />
@@ -24,13 +23,6 @@ export default function AboutPage({ t, href }) {
         kicker={t.labels.contact}
         talk={t.talk}
         contactHref={href('contact')}
-      />
-      <ProPartnerSection
-        labels={t.labels}
-        partnerTitle={page.partnerTitle}
-        partnerIntro={page.partnerIntro}
-        partnerForm={page.partnerForm}
-        titleId="about-partner-title"
       />
     </>
   );
