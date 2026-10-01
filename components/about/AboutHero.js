@@ -27,14 +27,19 @@ export default function AboutHero({ page, talk, explore, contactHref }) {
             <Kicker>{page.eyebrow}</Kicker>
           </HeroCopy>
           <HeroCopy delay={0.08}>
-            <h1 id="about-title" className="text-display mt-7">
-              {page.heroLine1}
+            <h1 id="about-title" className="hero-title text-display mt-7">
+              <span className="text-ink">{page.heroLine1}</span>
               <br />
               <span className="text-primary">{page.heroLine2}</span>
             </h1>
           </HeroCopy>
-          <HeroCopy delay={0.16}>
-            <div className="button-row">
+          {page.heroDescription ? (
+            <HeroCopy delay={0.12}>
+              <p className="hero-description">{page.heroDescription}</p>
+            </HeroCopy>
+          ) : null}
+          <HeroCopy delay={0.2}>
+            <div className="button-row hero-cta">
               <Link href={contactHref} className="button button-primary">
                 {talk}
               </Link>
