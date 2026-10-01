@@ -1,6 +1,5 @@
 import ContactHero from './ContactHero';
 import RequestCallback from './RequestCallback';
-import ProPartnerSection from '../shared/ProPartnerSection';
 
 export default function ContactPage({ t, href }) {
   const page = t.contactPage;
@@ -13,14 +12,11 @@ export default function ContactPage({ t, href }) {
         explore={page.scrollToCallback}
         contactHref="#contact-callback"
       />
-      <RequestCallback title={page.callbackTitle} form={page.callbackForm} />
-      <ProPartnerSection
-        labels={t.labels}
-        partnerTitle={page.partnerTitle}
-        partnerIntro={page.partnerIntro}
-        partnerForm={page.partnerForm}
-        titleId="contact-partner-title"
+      <RequestCallback
+        title={page.callbackTitle}
+        form={{ ...page.callbackForm, required: t.form.required }}
       />
+ 
     </>
   );
 }

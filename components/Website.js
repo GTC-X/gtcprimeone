@@ -7,15 +7,53 @@ import { faLayerGroup, faNetworkWired, faShieldHalved, faGlobe, faBars, faXmark,
 import { content } from '../lib/content';
 import { Icon, Reveal, Kicker, Heading, SplitHeading } from './shared/PageUi';
 function headingLabel(title) { return title?.line2 ? `${title.line1} ${title.line2}` : title?.line1 || title; }
-function ServiceDetailTitle({ title }) {
+function ServiceDetailTitle({ title, id }) {
     const parts = title.split('\n');
-    if (parts.length < 2) return <h1 className="text-display whitespace-pre-line">{title}</h1>;
+    if (parts.length < 2) return <h1 id={id} className="text-display whitespace-pre-line">{title}</h1>;
     return (
-        <h1 className="text-display">
+        <h1 id={id} className="text-display hero-title mt-7">
             <span className="text-ink">{parts[0]}</span>
             <br />
             <span className="text-primary">{parts.slice(1).join(' ')}</span>
         </h1>
+    );
+}
+function ServiceHeroCopy({ children, delay = 0 }) {
+    const reduced = useReducedMotion();
+    return (
+        <motion.div
+            initial={reduced ? false : { opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+        >
+            {children}
+        </motion.div>
+    );
+}
+function ServiceLiquidityHero({ service, talk, explore, contactHref, artAlt }) {
+    return (
+        <section className="hero" aria-labelledby="liquidity-service-title">
+            <div className="shell hero-grid">
+                <div className="hero-copy">
+                    <ServiceHeroCopy delay={0}>
+                        <Kicker>{service.title}</Kicker>
+                    </ServiceHeroCopy>
+                    <ServiceHeroCopy delay={0.08}>
+                        <ServiceDetailTitle id="liquidity-service-title" title={service.detailTitle} />
+                    </ServiceHeroCopy>
+                    <ServiceHeroCopy delay={0.12}>
+                        <p className="hero-description">{service.detail}</p>
+                    </ServiceHeroCopy>
+                    <ServiceHeroCopy delay={0.2}>
+                        <div className="button-row hero-cta">
+                            <Link href={contactHref} className="button button-primary">{talk}</Link>
+                            <a href="#liquidity-fx-title" className="button button-outline">{explore}</a>
+                        </div>
+                    </ServiceHeroCopy>
+                </div>
+                <HeroArtwork alt={artAlt} imageSrc="/assets/liquidity.png" />
+            </div>
+        </section>
     );
 }
 import HeroArtwork from './shared/HeroArtwork';
@@ -93,7 +131,29 @@ function Service({ t, page, href, language = 'en' }) {
     const s = t.services[index];
     if (!s) return null;
     return <>
-        <section className="inner-hero shell service-hero"><div><Kicker>{s.title}</Kicker><ServiceDetailTitle title={s.detailTitle} /><p className="inner-description">{s.detail}</p><Link href={href('contact')} className="button button-primary mt-8">{t.talk}</Link></div><div className="service-emblem"><span className="emblem-number">0{index + 1}</span><Icon icon={serviceIcons[index]} /><span>{s.title}</span></div></section>
+        {page === 'liquidity' ? (
+            <ServiceLiquidityHero
+                service={s}
+                talk={t.talk}
+                explore={t.explore}
+                contactHref={href('contact')}
+                artAlt={t.hero?.art || s.title}
+            />
+        ) : (
+            <section className="inner-hero shell service-hero">
+                <div>
+                    <Kicker>{s.title}</Kicker>
+                    <ServiceDetailTitle title={s.detailTitle} />
+                    <p className="inner-description">{s.detail}</p>
+                    <Link href={href('contact')} className="button button-primary mt-8">{t.talk}</Link>
+                </div>
+                <div className="service-emblem">
+                    <span className="emblem-number">0{index + 1}</span>
+                    <Icon icon={serviceIcons[index]} />
+                    <span>{s.title}</span>
+                </div>
+            </section>
+        )}
         {page === 'liquidity' ? <LiquidityFxCfd section={t.liquidityFx} /> : null}
         {page === 'liquidity' ? <LiquidityNarrative section={t.liquidityNarrative} contactHref={href('contact')} talkLabel={t.talk} /> : null}
         {page === 'liquidity' ? <LiquidityConnectivity section={t.liquidityConnectivity} /> : null}
