@@ -152,6 +152,43 @@
  .contact-callback-phone input {@apply bg-surface border-line text-sm py-3.5 md:py-4 placeholder:text-muted/80;}
  .contact-callback-note {@apply mt-6 mb-0;}
  .contact-callback-submit {@apply mt-8 min-w-[140px];}
+ .liquidity-hero {@apply pb-10 md:pb-12;}
+ .liquidity-hero-shell {@apply flex flex-col gap-0;}
+ .liquidity-hero-shell .hero-grid {@apply pb-6 md:pb-8;}
+ .liquidity-hero-tagline {@apply relative overflow-hidden w-full rounded-2xl border border-line px-8 py-6 md:px-12 md:py-8 shadow-soft;}
+ .liquidity-hero-tagline:before {content:'';position:absolute;inset:0;background:linear-gradient(105deg,#faf5ef 0%,#ffffff 38%,#eef1fc 100%);opacity:0.98;pointer-events:none;}
+ .liquidity-hero-tagline-accent {position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#b68756 0%,#805c35 100%);pointer-events:none;z-index:1;}
+ .liquidity-hero-tagline p {@apply relative z-[1] text-primary text-[15px] md:text-lg leading-[1.85] m-0 font-medium text-center max-w-[920px] mx-auto;}
+ .liquidity-section-title {@apply text-h2 text-primary;}
+ .liquidity-fx-head {@apply max-w-[920px] mx-auto text-center mb-12;}
+ .liquidity-fx-lead {@apply text-muted text-base leading-[1.95] mt-6;}
+ .liquidity-fx {@apply pt-14 pb-16;}
+ .liquidity-asset-bar {@apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3 bg-primary text-white rounded-2xl px-4 py-8 md:px-6 md:py-10;}
+ .liquidity-asset-item {@apply relative flex flex-col items-center justify-center text-center font-medium leading-snug min-h-[9rem] md:min-h-[10rem] px-2 py-4 rounded-xl outline-none cursor-default;}
+ .liquidity-asset-item:focus-visible {@apply ring-2 ring-secondary ring-offset-2 ring-offset-primary;}
+ .liquidity-asset-item-bg {position:absolute;inset:0;border-radius:inherit;background:linear-gradient(165deg,rgb(255 255 255 / 0.2) 0%,rgb(255 255 255 / 0.08) 100%);border:1px solid rgb(255 255 255 / 0.22);box-shadow:0 12px 28px rgb(0 0 0 / 12%);pointer-events:none;}
+ .liquidity-asset-item-content {@apply relative z-[1] flex flex-col items-center gap-4 md:gap-5;}
+ .liquidity-asset-icon {@apply flex items-center justify-center shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full text-2xl md:text-3xl; background:rgb(255 255 255 / 0.1);}
+ .liquidity-asset-label {@apply text-xs md:text-sm max-w-[9rem] text-white/95;}
+ .liquidity-narrative-lead {@apply max-w-[920px] mx-auto text-center pb-12 mb-12 border-b border-line;}
+ .liquidity-narrative-lead p {@apply text-primary text-[17px] md:text-xl leading-[1.85] m-0;}
+ .liquidity-narrative-grid {@apply grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 max-w-[1120px] mx-auto mb-14 md:mb-16;}
+ .liquidity-narrative-item {@apply relative ps-0 md:ps-8 md:border-s md:border-line;}
+ .liquidity-narrative-grid>div:first-child {@apply md:ps-0 md:border-s-0;}
+ .liquidity-narrative-index {@apply text-secondary-dark text-xs tracking-[0.2em] mb-4 block font-medium;}
+ .liquidity-narrative-item p {@apply text-muted text-[15px] md:text-base leading-[1.95] m-0;}
+
+ .liquidity-highlights {@apply grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1000px] mx-auto;}
+ .liquidity-highlight-card {@apply border border-line rounded-xl bg-white px-8 py-10 flex flex-col items-center text-center gap-5 outline-none cursor-default transition-[border-color,box-shadow,background-color,color] duration-300;}
+ .liquidity-highlight-card:hover,.liquidity-highlight-card:focus-visible,.liquidity-highlight-card.is-hovered {@apply border-primary bg-primary text-white shadow-soft;}
+ .liquidity-highlight-card:focus-visible {@apply ring-2 ring-secondary ring-offset-2;}
+ .liquidity-highlight-icon {@apply w-16 h-16 rounded-full border border-line bg-surface text-primary text-2xl flex items-center justify-center transition-colors duration-300;}
+ .liquidity-highlight-card:hover .liquidity-highlight-icon,.liquidity-highlight-card:focus-visible .liquidity-highlight-icon,.liquidity-highlight-card.is-hovered .liquidity-highlight-icon {@apply border-white/25 bg-white/15 text-white;}
+ .liquidity-highlight-card h3 {@apply text-h4 m-0;}
+ .liquidity-connectivity {@apply pb-20;}
+ .liquidity-connectivity-diagram {@apply w-full mt-6 md:mt-8;}
+ .liquidity-connectivity-figure {@apply m-0 w-full;}
+ .liquidity-connectivity-image {@apply w-full h-auto max-w-full object-contain;}
  .contact-grid {@apply grid grid-cols-[1fr_1.2fr] gap-20 items-start;}
  .contact-intro h1 {@apply mt-7;}
  .contact-email {@apply flex items-center gap-4 pt-9 mt-10 border-t text-primary;}
