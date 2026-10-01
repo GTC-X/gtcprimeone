@@ -23,9 +23,9 @@ export function Reveal({ children, className = '', delay = 0, ...props }) {
   );
 }
 
-export function Kicker({ children, light = false }) {
+export function Kicker({ children, light = false,className = '' }) {
   return (
-    <p className={`kicker ${light ? 'text-white/70' : 'text-primary'}`}>
+    <p className={`kicker ${className} ${light ? 'text-white/70' : 'text-primary'}`}>
       <span />
       {children}
     </p>

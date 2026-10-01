@@ -142,6 +142,16 @@
  .service-emblem>svg {@apply text-7xl;}
  .emblem-number {@apply absolute top-5 end-6 text-xs text-secondary-dark;}
  .service-emblem>span:last-child {@apply text-lg;}
+ .contact-callback {@apply pt-10 pb-14 md:pb-16 section-border;}
+ .contact-callback-title {@apply text-h3 text-primary text-center mb-10 md:mb-12;}
+ .contact-callback-form {@apply max-w-[920px] mx-auto;}
+ .contact-callback-grid {@apply gap-5 md:gap-6;}
+ .contact-callback-field input {@apply bg-surface border-line text-sm mt-0 py-3.5 md:py-4 placeholder:text-muted/80;}
+ .contact-callback-phone {@apply mt-2;}
+ .contact-callback-phone-label {@apply block text-sm font-medium text-primary mb-2;}
+ .contact-callback-phone input {@apply bg-surface border-line text-sm py-3.5 md:py-4 placeholder:text-muted/80;}
+ .contact-callback-note {@apply mt-6 mb-0;}
+ .contact-callback-submit {@apply mt-8 min-w-[140px];}
  .contact-grid {@apply grid grid-cols-[1fr_1.2fr] gap-20 items-start;}
  .contact-intro h1 {@apply mt-7;}
  .contact-email {@apply flex items-center gap-4 pt-9 mt-10 border-t text-primary;}
@@ -175,6 +185,23 @@
  .connectivity-analytics-label {@apply leading-snug;}
  .risk-narrative {@apply pt-16 pb-20;}
  .risk-narrative p {@apply text-muted text-base leading-[1.95] max-w-[920px] mx-auto text-center mb-8 last:mb-0;}
+ .about-narrative {@apply pt-16 pb-10;}
+ .about-narrative-head {@apply text-center max-w-[720px] mx-auto mb-12 md:mb-14;}
+ .about-narrative-title {@apply text-h3 mt-0;}
+ .about-narrative-lead {@apply max-w-[880px] mx-auto text-center pb-12 mb-12 border-b border-line;}
+ .about-narrative-lead p {@apply text-primary text-[17px] md:text-xl leading-[1.85] m-0;}
+ .about-narrative-grid {@apply grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1120px] mx-auto;}
+ .about-narrative-item {@apply bg-white border border-line rounded-xl px-7 py-8 md:px-9 md:py-9 shadow-sm h-full;}
+ .about-narrative-index {@apply text-secondary-dark text-xs tracking-[0.2em] mb-5 block font-medium;}
+ .about-narrative-item p {@apply text-muted text-[15px] md:text-base leading-[1.95] m-0;}
+ .about-cta-band {@apply bg-surface pb-20 md:pb-24 pt-4;}
+ .about-cta-banner {@apply relative overflow-hidden rounded-2xl border border-line bg-white px-8 py-12 md:px-14 md:py-16 shadow-soft;}
+ .about-cta-banner:before {content:'';position:absolute;inset:0;background:linear-gradient(135deg,#faf5ef 0%,#ffffff 42%,#eef1fc 100%);opacity:0.95;pointer-events:none;}
+ .about-cta-glow {position:absolute;width:20rem;height:20rem;border-radius:50%;background:radial-gradient(circle,rgb(182 135 86 / 0.22) 0%,transparent 70%);inset-inline-end:-5rem;top:-6rem;pointer-events:none;}
+ .about-cta-inner {@apply relative z-[1] max-w-[880px] mx-auto text-center;}
+ .about-cta-inner .kicker {@apply justify-center;}
+ .about-cta-text {@apply text-primary text-[17px] md:text-lg leading-[1.85] m-0 mt-2;}
+ .about-cta-actions {@apply flex flex-wrap justify-center gap-3 mt-9;}
  .risk-features {@apply grid grid-cols-3 gap-6;}
  .risk-feature-card {@apply border border-line rounded-lg p-8 bg-white flex flex-col gap-5 outline-none cursor-default transition-[border-color,box-shadow,background-color,color] duration-300;}
  .risk-feature-card:hover,.risk-feature-card:focus-visible,.risk-feature-card.is-hovered {@apply border-primary bg-primary text-white shadow-soft;}
