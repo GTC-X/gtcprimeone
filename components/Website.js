@@ -32,7 +32,7 @@ config.autoAddCss = false;
 const serviceIcons = [faLayerGroup, faNetworkWired, faShieldHalved];
 const audienceIcons = [faBuildingColumns, faBriefcase, faUserTie, faDisplay];
 const marketIcons = [faCoins,faGem,faCube,faChartSimple,faClock,faBuilding,faTableCellsLarge,faBolt];
-function Logo({inverse=false}) { return <img className={`brand-logo ${inverse?'inverse':''}`} src="/assets/gtc-prime-logo.webp" width="700" height="149" alt="GTC Prime"/>; }
+function Logo({inverse=false}) { return <img className={`brand-logo ${inverse?'inverse':''}`} src="/gtcprime.png" width="2170" height="725" alt="GTC Prime"/>; }
 export default function Website({language='en',page='home'}) {
  const t=content[language]; const [menu,setMenu]=useState(false); const menuButton=useRef(null); const href=(target='home',lang=language)=>`${lang==='ar'?'/ar':''}${target==='home'?'/':`/${target}/`}`;
  useEffect(()=>{ document.documentElement.lang=language;document.documentElement.dir=language==='ar'?'rtl':'ltr';setMenu(false);},[language,page]);
