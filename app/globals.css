@@ -153,6 +153,43 @@
  .benefits,.service-details {@apply grid grid-cols-3 gap-14;}
  .benefits-six {@apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 lg:gap-y-14;}
  .why-section {@apply bg-surface border-y border-line;}
+ .liquidity-fx-section {@apply bg-surface border-b border-line pt-8 pb-12 lg:pt-10 lg:pb-16;}
+ .liquidity-fx-head {@apply max-w-[780px] mx-auto text-center mb-10 md:mb-12;}
+ .liquidity-fx-title {@apply text-h2 text-primary m-0;}
+ .liquidity-fx-lead {@apply text-muted text-base md:text-[17px] leading-[1.9] mt-5 md:mt-6 m-0;}
+ .liquidity-fx-asset-bar {@apply list-none p-0 m-0 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 rounded-2xl bg-primary px-4 py-8 md:px-6 md:py-10 shadow-[0_24px_48px_-28px_rgba(41,59,147,0.55)];}
+ .liquidity-fx-asset {@apply relative flex flex-col items-center justify-center text-center min-h-[8.5rem] md:min-h-[9.5rem] px-2 py-4 rounded-xl outline-none cursor-default;}
+ .liquidity-fx-asset:focus-visible {@apply ring-2 ring-secondary ring-offset-2 ring-offset-primary;}
+ .liquidity-fx-asset-glow {position:absolute;inset:0;border-radius:inherit;background:linear-gradient(165deg,rgb(255 255 255 / 0.22) 0%,rgb(255 255 255 / 0.06) 100%);border:1px solid rgb(255 255 255 / 0.28);box-shadow:0 14px 32px rgb(0 0 0 / 14%);pointer-events:none;}
+ .liquidity-fx-asset-icon {@apply relative z-[1] flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-full text-2xl md:text-3xl text-white; background:rgb(255 255 255 / 0.12);border:1px solid rgb(255 255 255 / 0.2);}
+ .liquidity-fx-asset-label {@apply relative z-[1] mt-4 text-xs md:text-sm font-medium leading-snug text-white/95 max-w-[9rem];}
+ .liquidity-narrative {@apply pb-12 lg:pb-16;}
+ .liquidity-narrative-head {@apply text-center max-w-3xl mx-auto mb-10 md:mb-12;}
+ .liquidity-narrative-head .kicker {@apply justify-center;}
+ .liquidity-narrative-lead {@apply max-w-[920px] mx-auto text-center pb-10 md:pb-12 mb-10 md:mb-12 border-b border-line;}
+ .liquidity-narrative-lead p {@apply text-primary text-[17px] md:text-xl leading-[1.85] m-0 font-medium;}
+ .liquidity-narrative-grid {@apply grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 max-w-[1120px] mx-auto mb-12 md:mb-14;}
+ .liquidity-narrative-item {@apply relative ps-0 md:ps-8 md:border-s md:border-line;}
+ .liquidity-narrative-grid>div:first-child {@apply md:ps-0 md:border-s-0;}
+ .liquidity-narrative-index {@apply text-secondary-dark text-xs tracking-[0.2em] mb-4 block font-medium;}
+ .liquidity-narrative-item p {@apply text-muted text-[15px] md:text-base leading-[1.95] m-0;}
+ .liquidity-narrative-closing {@apply max-w-[820px] mx-auto text-center rounded-2xl border border-line bg-surface/60 px-8 py-8 md:px-12 md:py-10 mb-12 md:mb-14;}
+ .liquidity-narrative-closing p {@apply text-ink text-base md:text-lg leading-[1.85] m-0;}
+ .liquidity-highlights {@apply grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto list-none p-0 m-0;}
+ .liquidity-highlight-card {@apply border border-line rounded-xl bg-white px-8 py-10 flex flex-col items-center text-center gap-5 outline-none cursor-default transition-[border-color,box-shadow,background-color,color] duration-300;}
+ .liquidity-highlight-card:hover,.liquidity-highlight-card:focus-visible,.liquidity-highlight-card.is-hovered {@apply border-primary bg-primary text-white shadow-soft;}
+ .liquidity-highlight-card:focus-visible {@apply ring-2 ring-secondary ring-offset-2;}
+ .liquidity-highlight-icon {@apply w-16 h-16 rounded-full border border-line bg-surface text-primary text-2xl flex items-center justify-center transition-colors duration-300;}
+ .liquidity-highlight-card:hover .liquidity-highlight-icon,.liquidity-highlight-card:focus-visible .liquidity-highlight-icon,.liquidity-highlight-card.is-hovered .liquidity-highlight-icon {@apply border-white/25 bg-white/15 text-white;}
+ .liquidity-highlight-card h3 {@apply text-h4 m-0;}
+ .liquidity-connectivity-section {@apply bg-surface border-y border-line;}
+ .liquidity-connectivity-head {@apply max-w-[820px] mx-auto text-center mb-10 md:mb-12;}
+ .liquidity-connectivity-head .kicker {@apply justify-center;}
+ .liquidity-connectivity-title {@apply text-h2 text-primary m-0;}
+ .liquidity-connectivity-intro {@apply text-muted text-base md:text-[17px] leading-[1.9] mt-5 md:mt-6 m-0 max-w-[720px] mx-auto;}
+ .liquidity-connectivity-diagram-wrap {@apply max-w-[1120px] mx-auto;}
+ .liquidity-connectivity-figure {@apply m-0 rounded-2xl border border-line bg-white p-4 md:p-6 shadow-[0_20px_48px_-32px_rgba(41,59,147,0.35)];}
+ .liquidity-connectivity-image {@apply w-full h-auto max-w-full object-contain rounded-xl;}
  .liquidity-markets-section {@apply bg-white;}
  .cta-section.section {@apply pt-0 pb-10 lg:pb-16;}
  .liquidity-markets-head {@apply text-center max-w-3xl mx-auto mb-10;}
