@@ -27,11 +27,17 @@ export default function ConnectivityHero({ page, talk, explore, contactHref }) {
             <Kicker>{page.eyebrow}</Kicker>
           </HeroCopy>
           <HeroCopy delay={0.08}>
-            <h1 id="connectivity-title" className="text-display mt-7">
-              {page.heroLine1}
+            <h1 id="connectivity-title" className="hero-title text-display mt-7">
+              <span className="text-ink">{page.heroLine1}</span>
+              <br />
               <span className="text-primary">{page.heroLine2}</span>
             </h1>
           </HeroCopy>
+          {page.heroDescription ? (
+            <HeroCopy delay={0.12}>
+              <p className="hero-description">{page.heroDescription}</p>
+            </HeroCopy>
+          ) : null}
           <HeroCopy delay={0.16}>
             <div className="button-row">
               <Link href={contactHref} className="button button-primary">
