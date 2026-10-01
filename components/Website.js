@@ -1,19 +1,18 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion, useInView } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLayerGroup, faNetworkWired, faShieldHalved, faGlobe, faBars, faXmark, faCheck, faBuildingColumns, faBriefcase, faUserTie, faDisplay, faCoins, faGem, faCube, faChartSimple, faClock, faBuilding, faTableCellsLarge, faBolt, faFileLines, faEnvelope, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { content } from '../lib/content';
+import { Icon, Reveal, Kicker, Heading } from './shared/PageUi';
+import HeroArtwork from './shared/HeroArtwork';
+import RiskManagementPage from './risk-management/RiskManagementPage';
+import ConnectivityPage from './connectivity/ConnectivityPage';
 config.autoAddCss = false;
 const serviceIcons = [faLayerGroup, faNetworkWired, faShieldHalved];
 const audienceIcons = [faBuildingColumns, faBriefcase, faUserTie, faDisplay];
 const marketIcons = [faCoins,faGem,faCube,faChartSimple,faClock,faBuilding,faTableCellsLarge,faBolt];
-function Icon({icon,...props}) { return <FontAwesomeIcon icon={icon} aria-hidden="true" {...props} />; }
-function Reveal({children, className='', delay=0, ...props}) { const reduced = useReducedMotion(); return <motion.div initial={{opacity:1,y:0}} whileInView={reduced?undefined:{opacity:[0,1],y:[24,0]}} viewport={{once:true,amount:0.12}} transition={{duration:0.65,delay,ease:[0.22,1,0.36,1]}} className={className} {...props}>{children}</motion.div>; }
-function Kicker({children,light=false}) { return <p className={`kicker ${light?'text-white/70':'text-primary'}`}><span/>{children}</p>; }
-function Heading({children,className=''}) { return <h2 className={`whitespace-pre-line ${className}`}>{children}</h2>; }
 function Logo({inverse=false}) { return <img className={`brand-logo ${inverse?'inverse':''}`} src="/assets/gtc-prime-logo.webp" width="700" height="149" alt="GTC Prime"/>; }
 export default function Website({language='en',page='home'}) {
  const t=content[language]; const [menu,setMenu]=useState(false); const menuButton=useRef(null); const href=(target='home',lang=language)=>`${lang==='ar'?'/ar':''}${target==='home'?'/':`/${target}/`}`;
@@ -27,26 +26,12 @@ export default function Website({language='en',page='home'}) {
    <nav aria-label={language==='ar'?'القائمة الرئيسية':'Main navigation'} className="desktop-nav">{nav.map(key=><Link key={key} href={href(key)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}</nav>
    <div className="header-actions"><Link className="language-control" href={href(page,language==='en'?'ar':'en')} aria-label={t.language}><Icon icon={faGlobe}/><span>{language==='en'?'العربية':'EN'}</span></Link><Link href={href('contact')} className="button button-primary header-cta">{t.talk}</Link><button ref={menuButton} onClick={()=>setMenu(!menu)} aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu?t.close:t.menu} className="menu-toggle"><Icon icon={menu?faXmark:faBars}/></button></div>
   </div>{menu&&<nav id="mobile-nav" className="mobile-nav" aria-label={t.menu}>{['home',...nav,'contact'].map(key=><Link key={key} href={href(key)} onClick={()=>setMenu(false)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}<a href="https://mygtcportal.com/" target="_blank" rel="noopener noreferrer">{t.account}</a></nav>}</header>
-  <main id="main">{page==='home'?<Home t={t} href={href}/>:page==='about'?<About t={t} href={href}/>:page==='contact'?<Contact t={t}/>:<Service t={t} page={page} href={href}/>}</main>
+  <main id="main">{page==='home'?<Home t={t} href={href}/>:page==='about'?<About t={t} href={href}/>:page==='contact'?<Contact t={t}/>:page==='risk-management'?<RiskManagementPage t={t} href={href}/>:page==='connectivity'?<ConnectivityPage t={t} href={href}/>:<Service t={t} page={page} href={href}/>}</main>
   <Footer t={t} href={href}/>
  </div>;
 }
-function HeroArtwork({t}) {
- const ref=useRef(null);
- const visible=useInView(ref,{amount:0.1});
- const reduced=useReducedMotion();
- const moving=visible && !reduced;
- return <motion.div ref={ref} className="hero-art" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.8}}>
-  <motion.div className="hero-float" initial={false}
-   animate={moving?{y:[0,-16,-5,0],x:[0,6,-4,0],rotate:[0,1.5,-0.8,0]}:{y:0,x:0,rotate:0}}
-   transition={moving?{duration:9,repeat:Infinity,ease:'easeInOut'}:{duration:reduced?0:0.5}}>
-   <img src="/assets/hero-transparent.webp" width="1536" height="1024" alt={t.hero.art} fetchPriority="high"/>
-  </motion.div>
-  <div className="art-caption"><span>01 / 03</span><span>{t.services.map(s=>s.title).join(' · ')}</span></div>
- </motion.div>;
-}
 function Home({t,href}) { return <>
- <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><Kicker>{t.hero.eyebrow}</Kicker><h1 className="text-display mt-7">{t.hero.line1}<br/><span className="text-primary">{t.hero.line2}</span></h1><p className="hero-description">{t.hero.description}</p><div className="button-row"><Link href={href('contact')} className="button button-primary">{t.talk}</Link><a href="#solutions" className="button button-outline">{t.explore}</a></div><p className="hero-foot"><span className="mini-rule"/>{t.hero.foot}</p></div><HeroArtwork t={t}/></div></section>
+ <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><Kicker>{t.hero.eyebrow}</Kicker><h1 className="text-display mt-7">{t.hero.line1}<br/><span className="text-primary">{t.hero.line2}</span></h1><p className="hero-description">{t.hero.description}</p><div className="button-row"><Link href={href('contact')} className="button button-primary">{t.talk}</Link><a href="#solutions" className="button button-outline">{t.explore}</a></div><p className="hero-foot"><span className="mini-rule"/>{t.hero.foot}</p></div><HeroArtwork alt={t.hero.art} captionLeft="01 / 03" captionRight={t.services.map(s=>s.title).join(' · ')}/></div></section>
  <div className="platform-strip"><div className="shell platform-row"><span>{t.platforms}</span><div>MetaTrader <b>4</b></div><div>MetaTrader <b>5</b></div><div className="ctrader">cTrader</div><span className="strip-end">{t.hero.foot}</span></div></div>
  <section className="section shell" id="solutions"><Reveal className="section-top"><div><Kicker>{t.labels.solutions}</Kicker><Heading>{t.intro.title}</Heading></div><p className="section-intro">{t.intro.description}</p></Reveal><div className="solutions-grid">{t.services.map((s,i)=><Reveal key={s.slug} delay={i*.08} className="service-card"><div className="card-top"><span className="icon-tile"><Icon icon={serviceIcons[i]}/></span><span className="card-number">0{i+1}</span></div><h3>{s.title}</h3><p>{s.text}</p><ul>{s.features.map(f=><li key={f}><Icon icon={faCheck}/>{f}</li>)}</ul><Link href={href(s.slug)} className="text-link" aria-label={`${t.discover}: ${s.title}`}>{t.discover}<span className="link-line"/></Link></Reveal>)}</div></section>
  <Audience t={t} href={href}/><Technology t={t} href={href}/><Markets t={t} href={href}/>
