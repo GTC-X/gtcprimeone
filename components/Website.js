@@ -29,6 +29,7 @@ import LiquidityNarrative from './shared/LiquidityNarrative';
 import LiquidityConnectivity from './shared/LiquidityConnectivity';
 import SiteCta from './shared/SiteCta';
 config.autoAddCss = false;
+const OPEN_ACCOUNT_URL = 'https://web.mygtc.app/user?redirect=%252Fdashboard';
 const serviceIcons = [faLayerGroup, faNetworkWired, faShieldHalved];
 const audienceIcons = [faBuildingColumns, faBriefcase, faUserTie, faDisplay];
 const marketIcons = [faCoins,faGem,faCube,faChartSimple,faClock,faBuilding,faTableCellsLarge,faBolt];
@@ -43,8 +44,8 @@ export default function Website({language='en',page='home'}) {
   <header className="site-header"><div className="shell header-row">
    <Link href={href()} aria-label="GTC Prime" className="logo-link"><Logo/></Link>
    <nav aria-label={language==='ar'?'القائمة الرئيسية':'Main navigation'} className="desktop-nav">{nav.map(key=><Link key={key} href={href(key)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}</nav>
-   <div className="header-actions"><Link className="language-control" href={href(page,language==='en'?'ar':'en')} aria-label={t.language}><Icon icon={faGlobe}/><span>{language==='en'?'العربية':'EN'}</span></Link><Link href={href('contact')} className="button button-primary header-cta">{t.talk}</Link><button ref={menuButton} onClick={()=>setMenu(!menu)} aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu?t.close:t.menu} className="menu-toggle"><Icon icon={menu?faXmark:faBars}/></button></div>
-  </div>{menu&&<nav id="mobile-nav" className="mobile-nav" aria-label={t.menu}>{['home',...nav,'contact'].map(key=><Link key={key} href={href(key)} onClick={()=>setMenu(false)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}<a href="https://mygtcportal.com/" target="_blank" rel="noopener noreferrer">{t.account}</a></nav>}</header>
+   <div className="header-actions"><Link className="language-control" href={href(page,language==='en'?'ar':'en')} aria-label={t.language}><Icon icon={faGlobe}/><span>{language==='en'?'العربية':'EN'}</span></Link><div className="header-cta-group header-cta"><a href={OPEN_ACCOUNT_URL} target="_blank" rel="noopener noreferrer" className="button header-open-account">{t.openAccount}</a><Link href={href('contact')} className="button button-primary">{t.talk}</Link></div><button ref={menuButton} onClick={()=>setMenu(!menu)} aria-expanded={menu} aria-controls="mobile-nav" aria-label={menu?t.close:t.menu} className="menu-toggle"><Icon icon={menu?faXmark:faBars}/></button></div>
+  </div>{menu&&<nav id="mobile-nav" className="mobile-nav" aria-label={t.menu}>{['home',...nav,'contact'].map(key=><Link key={key} href={href(key)} onClick={()=>setMenu(false)} aria-current={page===key?'page':undefined}>{t.nav[key]}</Link>)}<a href={OPEN_ACCOUNT_URL} target="_blank" rel="noopener noreferrer">{t.openAccount}</a><a href="https://mygtcportal.com/" target="_blank" rel="noopener noreferrer">{t.account}</a></nav>}</header>
   <main id="main">{page==='home'?<Home t={t} href={href} language={language}/>:page==='about'?<AboutPage t={t} href={href}/>:page==='contact'?<ContactPage t={t} href={href}/>:page==='risk-management'?<RiskManagementPage t={t} href={href}/>:page==='connectivity'?<ConnectivityPage t={t} href={href}/>:<Service t={t} page={page} href={href} language={language}/>}</main>
   <Footer t={t} href={href}/>
  </div>;
