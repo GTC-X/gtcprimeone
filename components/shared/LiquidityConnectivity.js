@@ -15,7 +15,7 @@ export default function LiquidityConnectivity({ section }) {
           <Kicker>{section.kicker}</Kicker>
           <div id="liquidity-connectivity-heading">
             {section.title?.line1 ? (
-              <SplitHeading className="!text-h2 mt-4" {...section.title} />
+              <SplitHeading className="mt-4" {...section.title} />
             ) : (
               <h2 className="liquidity-connectivity-title mt-4">{section.title}</h2>
             )}

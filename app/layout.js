@@ -5,5 +5,16 @@ import '@fontsource/noto-sans-arabic/400.css';
 import '@fontsource/noto-sans-arabic/500.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import './globals.css';
-export const metadata = { title: 'GTC Prime | Institutional Liquidity & Connectivity', description: 'Explore GTC Prime liquidity, connectivity and risk management solutions for institutional and professional clients.', icons: { icon: '/favicon.svg' } };
+import { getPageMetadata } from '../lib/seo';
+
+const homeMeta = getPageMetadata('en', 'home');
+
+export const metadata = {
+  metadataBase: new URL('https://gtcprime.com'),
+  title: homeMeta.title,
+  description: homeMeta.description,
+  openGraph: homeMeta.openGraph,
+  twitter: homeMeta.twitter,
+  icons: { icon: '/favicon.svg' },
+};
 export default function RootLayout({ children }) { return <html lang="en" suppressHydrationWarning><body>{children}</body></html>; }

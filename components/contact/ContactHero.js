@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { motion, useReducedMotion } from 'motion/react';
 import HeroArtwork from '../shared/HeroArtwork';
 import { Kicker } from '../shared/PageUi';
@@ -18,7 +17,7 @@ function HeroCopy({ children, delay = 0 }) {
   );
 }
 
-export default function ContactHero({ page, talk, explore, contactHref }) {
+export default function ContactHero({ page }) {
   return (
     <section className="hero" aria-labelledby="contact-title">
       <div className="shell hero-grid">
@@ -27,22 +26,17 @@ export default function ContactHero({ page, talk, explore, contactHref }) {
             <Kicker>{page.eyebrow}</Kicker>
           </HeroCopy>
           <HeroCopy delay={0.08}>
-            <h1 id="contact-title" className="text-display mt-7">
-              {page.heroLine1}
+            <h1 id="contact-title" className="hero-title text-h1 mt-7">
+              <span className="text-ink">{page.heroLine1}</span>
               <br />
               <span className="text-primary">{page.heroLine2}</span>
             </h1>
           </HeroCopy>
-          <HeroCopy delay={0.16}>
-            <div className="button-row">
-              <Link href={contactHref} className="button button-primary">
-                {talk}
-              </Link>
-              <a href="#contact-callback" className="button button-outline">
-                {explore}
-              </a>
-            </div>
-          </HeroCopy>
+          {page.heroDescription ? (
+            <HeroCopy delay={0.12}>
+              <p className="hero-description">{page.heroDescription}</p>
+            </HeroCopy>
+          ) : null}
         </div>
         <HeroArtwork alt={page.artAlt} imageSrc={"/assets/contact-us.png"} />
       </div>

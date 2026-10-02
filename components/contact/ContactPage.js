@@ -1,22 +1,18 @@
 import ContactHero from './ContactHero';
 import RequestCallback from './RequestCallback';
+import ContactChannels from './ContactChannels';
 
-export default function ContactPage({ t, href }) {
+export default function ContactPage({ t }) {
   const page = t.contactPage;
 
   return (
     <>
-      <ContactHero
-        page={page}
-        talk={t.talk}
-        explore={page.scrollToCallback}
-        contactHref="#contact-callback"
-      />
+      <ContactHero page={page} />
       <RequestCallback
         title={page.callbackTitle}
         form={{ ...page.callbackForm, required: t.form.required }}
       />
- 
+      <ContactChannels section={page.channelsSection} />
     </>
   );
 }

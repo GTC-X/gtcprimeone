@@ -18,6 +18,8 @@ function HeroCopy({ children, delay = 0 }) {
 }
 
 export default function RiskHero({ riskPage }) {
+  const description = riskPage.heroDescription || riskPage.heroLead;
+
   return (
     <section className="hero" aria-labelledby="risk-title">
       <div className="shell hero-grid">
@@ -26,22 +28,31 @@ export default function RiskHero({ riskPage }) {
             <Kicker>{riskPage.eyebrow}</Kicker>
           </HeroCopy>
           <HeroCopy delay={0.08}>
-            <h1 id="risk-title" className="text-display mt-7">
-              {riskPage.heroLine1}
+            <h1 id="risk-title" className="hero-title text-h1 mt-7">
+              <span className="text-ink">{riskPage.heroLine1}</span>
               <br />
               <span className="text-primary">{riskPage.heroLine2}</span>
             </h1>
           </HeroCopy>
-          <HeroCopy delay={0.16}>
-            <p className="hero-description">{riskPage.heroLead}</p>
-          </HeroCopy>
+          {description ? (
+            <HeroCopy delay={0.12}>
+              <p className="hero-description">{description}</p>
+            </HeroCopy>
+          ) : null}
+          {riskPage.heroMetrics?.length ? (
+            <HeroCopy delay={0.14}>
+              <ul className="risk-hero-metrics" aria-label="Risk management highlights">
+                {riskPage.heroMetrics.map((metric) => (
+                  <li key={metric.label}>
+                    <span className="risk-hero-metrics-value">{metric.value}</span>
+                    <span className="risk-hero-metrics-label">{metric.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </HeroCopy>
+          ) : null}
         </div>
-        <HeroArtwork
-          alt={riskPage.artAlt}
-          imageSrc='/assets/risk-management.png'
-          // captionLeft={riskPage.artCaptionLeft}
-          // captionRight={riskPage.artCaptionRight}
-        />
+        <HeroArtwork alt={riskPage.artAlt} imageSrc="/assets/risk-management.png" />
       </div>
     </section>
   );

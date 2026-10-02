@@ -36,11 +36,11 @@ export function Heading({ children, className = '' }) {
   return <h2 className={`whitespace-pre-line ${className}`}>{children}</h2>;
 }
 
-export function SplitHeading({ line1, line2, accent = 'primary', className = '', light = false }) {
+export function SplitHeading({ line1, line2, accent = 'primary', className = '', light = false, id }) {
   const accentClass = accent === 'secondary' ? 'text-secondary' : 'text-primary';
   const inkClass = light ? 'text-white' : 'text-ink';
   return (
-    <h2 className={`whitespace-pre-line ${className}`}>
+    <h2 id={id} className={`whitespace-pre-line ${className}`}>
       {line2 ? (
         <>
           <span className={inkClass}>{line1}{' '}</span>

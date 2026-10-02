@@ -66,7 +66,7 @@ export default function LiquidityMarkets({ t, href, language = 'en' }) {
       <div className="shell">
         <Reveal className="liquidity-markets-head">
           <Kicker>{t.labels.liquidityMarkets}</Kicker>
-          <SplitHeading className="!text-h2" {...m.title} />
+          <SplitHeading {...m.title} />
           <p className="liquidity-markets-intro">{m.intro}</p>
         </Reveal>
         <div className="liquidity-markets-board">

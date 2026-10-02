@@ -32,7 +32,7 @@ function HighlightItem({ title, icon, index }) {
       >
         <Icon icon={icon} />
       </motion.span>
-      <h3>{title}</h3>
+      <h4>{title}</h4>
     </motion.li>
   );
 }
@@ -46,7 +46,7 @@ export default function LiquidityNarrative({ section, contactHref, talkLabel }) 
       <Reveal className="liquidity-narrative-head">
         <Kicker>{section.kicker}</Kicker>
         <div id="liquidity-narrative-heading">
-          <SplitHeading className="!text-h2 mt-4" {...section.title} />
+          <SplitHeading className="mt-4" {...section.title} />
         </div>
       </Reveal>
 

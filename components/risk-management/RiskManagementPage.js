@@ -1,15 +1,21 @@
+import SiteCta from '../shared/SiteCta';
 import RiskHero from './RiskHero';
-import RiskNarrative from './RiskNarrative';
-import RiskFeatures from './RiskFeatures';
+import RiskIntro from './RiskIntro';
+import RiskPillars from './RiskPillars';
+import RiskCapabilities from './RiskCapabilities';
+import RiskApproach from './RiskApproach';
 
-export default function RiskManagementPage({ t }) {
+export default function RiskManagementPage({ t, href }) {
   const page = t.riskPage;
 
   return (
     <>
       <RiskHero riskPage={page} />
-      <RiskNarrative paragraphs={page.paragraphs} />
-      <RiskFeatures features={page.features} />
+      <RiskIntro paragraphs={page.intro ?? page.paragraphs} />
+      <RiskPillars section={page.pillarsSection} />
+      <RiskCapabilities section={page.capabilitiesSection ?? { features: page.features }} />
+      <RiskApproach section={page.approachSection} />
+      <SiteCta t={t} href={href} />
     </>
   );
 }

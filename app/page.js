@@ -1,2 +1,10 @@
 import Website from '../components/Website';
-export default function Page() { return <Website language="en" page="home" />; }
+import { getPageMetadata } from '../lib/seo';
+
+export function generateMetadata() {
+  return getPageMetadata('en', 'home');
+}
+
+export default function Page() {
+  return <Website language="en" page="home" />;
+}
